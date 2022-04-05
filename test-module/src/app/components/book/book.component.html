@@ -1,0 +1,64 @@
+<h1 style="text-align: center">Book Manager</h1>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h1 class="btn btn-primary" id="formTitle">Create new Book</h1>
+  </div>
+  <div class="container-fluid">
+    <form class="box" [formGroup]="bookForm" (ngSubmit)="createBook()" >
+      <table>
+        <tr>
+          <th>
+            <label for="title">TITLE: </label>
+          </th>
+          <td>
+            <input type="text" id="title" placeholder="enter title" formControlName="title">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="author">AUTHOR: </label>
+          </th>
+          <td>
+            <input type="text" id="author" placeholder="enter author" formControlName="author">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="description">DESCRIPTION: </label>
+          </th>
+          <td>
+            <input type="text"id="description" placeholder="enter description" formControlName="description">
+          </td>
+        </tr>
+        <tr>
+          <button type="submit" class="btn btn-primary" id="submit">Create</button>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="container-fluid">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Authors</th>
+        <th>Description</th>
+        <th colspan="3">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.description}}</td>
+        <td><button (click)="getBookDetail(book.id)" class="btn btn-primary">Detail</button></td>
+        <td><button (click)="deleteBook(book.id)" class="btn btn-danger">Delete</button></td>
+        <td><button (click)="editBook(book.id)">Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
